@@ -47,6 +47,20 @@ nav.forEach((link, index) => {
   link.innerHTML = siteContent.nav[navContentKeys[index]]
 })
 
+let last = document.createElement('a')
+let first = document.createElement('a')
+var lastText = document.createTextNode("Last");
+var firstText = document.createTextNode("First");
+
+last.appendChild(lastText);
+first.appendChild(firstText);
+
+document.getElementsByTagName('nav')[0].appendChild(last)
+document.getElementsByTagName('nav')[0].prepend(first)
+document.querySelectorAll('a').forEach(link => {
+  link.style.color = 'green'
+})
+
 // Images
 let images = Array.from(document.getElementsByTagName('img'))
 
