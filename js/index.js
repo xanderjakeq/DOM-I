@@ -60,9 +60,20 @@ images.forEach(img => {
 
 // header
 const ctaContent = siteContent.cta
-const header = document.querySelector('.cta-text').children
-header[0].innerHTML = ctaContent.h1
-header[1].innerHTML = ctaContent.button
+const header = Array.from(document.querySelector('.cta-text').children)
+
+
+
+header.forEach(element => {
+  if(element.tagName === 'h1'){
+    element.innerHTML = ctaContent.h1
+  }else{
+    element.innerHTML = ctaContent.button
+    element.addEventListener('click', function(){
+      this.innerHTML = 'clicked'
+    })
+  }
+})
 
 // main 
 
