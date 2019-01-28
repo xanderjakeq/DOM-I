@@ -44,16 +44,13 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 let nav = Array.from(document.getElementsByTagName('nav')[0].children)
 const navContentKeys = Object.keys(siteContent.nav)
 nav.forEach((link, index) => {
-  link.innerHTML = siteContent.nav[navContentKeys[index]]
+  link.textContent = siteContent.nav[navContentKeys[index]]
 })
 
 let last = document.createElement('a')
 let first = document.createElement('a')
-var lastText = document.createTextNode("Last");
-var firstText = document.createTextNode("First");
-
-last.appendChild(lastText);
-first.appendChild(firstText);
+last.textContent = 'Last'
+first.textContent = 'First'
 
 document.getElementsByTagName('nav')[0].appendChild(last)
 document.getElementsByTagName('nav')[0].prepend(first)
@@ -80,11 +77,11 @@ const header = Array.from(document.querySelector('.cta-text').children)
 
 header.forEach(element => {
   if(element.tagName === 'h1'){
-    element.innerHTML = ctaContent.h1
+    element.textContent = ctaContent.h1
   }else{
-    element.innerHTML = ctaContent.button
+    element.textContent = ctaContent.button
     element.addEventListener('click', function(){
-      this.innerHTML = 'clicked'
+      this.textContent = 'clicked'
     })
   }
 })
@@ -97,7 +94,7 @@ mainContent.splice(mainContent.indexOf('img/mid-page-accent.jpg'),1)
 const main = Array.from(document.getElementsByClassName('main-content')[0].querySelectorAll('h4,p'))
 
 main.forEach((element, index) => {
-  element.innerHTML = mainContent[index]
+  element.textContent = mainContent[index]
 })
 
 // contact
@@ -107,7 +104,7 @@ const contactContent = Object.values(siteContent["contact"])
 const contact = Array.from(document.getElementsByClassName('contact')[0].children)
 
 contact.forEach((element, index) => {
-  element.innerHTML = contactContent[index]
+  element.textContent = contactContent[index]
 })
 
-document.getElementsByTagName('footer')[0].children[0].innerHTML = siteContent.footer.copyright
+document.getElementsByTagName('footer')[0].children[0].textContent = siteContent.footer.copyright
