@@ -40,3 +40,49 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+// Nav
+let nav = Array.from(document.getElementsByTagName('nav')[0].children)
+const navContentKeys = Object.keys(siteContent.nav)
+nav.forEach((link, index) => {
+  link.innerHTML = siteContent.nav[navContentKeys[index]]
+})
+
+// Images
+let images = Array.from(document.getElementsByTagName('img'))
+
+images.forEach(img => {
+  if(img.id === 'cta-img'){
+    img.src = siteContent.cta["img-src"]
+  }else if(img.id === 'middle-img'){
+    img.src = siteContent["main-content"]["middle-img-src"]
+  }
+})
+
+// header
+const ctaContent = siteContent.cta
+const header = document.querySelector('.cta-text').children
+header[0].innerHTML = ctaContent.h1
+header[1].innerHTML = ctaContent.button
+
+// main 
+
+const mainContent = Object.values(siteContent["main-content"])
+mainContent.splice(mainContent.indexOf('img/mid-page-accent.jpg'),1)
+
+const main = Array.from(document.getElementsByClassName('main-content')[0].querySelectorAll('h4,p'))
+
+main.forEach((element, index) => {
+  element.innerHTML = mainContent[index]
+})
+
+// contact
+
+const contactContent = Object.values(siteContent["contact"])
+
+const contact = Array.from(document.getElementsByClassName('contact')[0].children)
+
+contact.forEach((element, index) => {
+  element.innerHTML = contactContent[index]
+})
+
+document.getElementsByTagName('footer')[0].children[0].innerHTML = siteContent.footer.copyright
