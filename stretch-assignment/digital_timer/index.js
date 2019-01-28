@@ -1,9 +1,13 @@
 const startTime = Date.now()
 let elapsed;
+
+const btn = document.getElementById('btn')
+
 const sTens = document.getElementById('secondTens')
 const sOnes = document.getElementById('secondOnes')
 const msHunds = document.getElementById('msHundreds')
 const msTens = document.getElementById('msTens')
+
 
 let done = false
 
@@ -27,6 +31,10 @@ function runClock(){
     }
 }
 
+
+btn.addEventListener('click', stop)
+
 function stop() {
     clearInterval(interval);
+    console.log('called')
   }
