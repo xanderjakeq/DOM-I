@@ -40,3 +40,71 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+// Nav
+let nav = Array.from(document.getElementsByTagName('nav')[0].children)
+const navContentKeys = Object.keys(siteContent.nav)
+nav.forEach((link, index) => {
+  link.textContent = siteContent.nav[navContentKeys[index]]
+})
+
+let last = document.createElement('a')
+let first = document.createElement('a')
+last.textContent = 'Last'
+first.textContent = 'First'
+
+document.getElementsByTagName('nav')[0].appendChild(last)
+document.getElementsByTagName('nav')[0].prepend(first)
+document.querySelectorAll('a').forEach(link => {
+  link.style.color = 'green'
+})
+
+// Images
+let images = Array.from(document.getElementsByTagName('img'))
+
+images.forEach(img => {
+  if(img.id === 'cta-img'){
+    img.src = siteContent.cta["img-src"]
+  }else if(img.id === 'middle-img'){
+    img.src = siteContent["main-content"]["middle-img-src"]
+  }
+})
+
+// header
+const ctaContent = siteContent.cta
+const header = Array.from(document.querySelector('.cta-text').children)
+
+
+
+header.forEach(element => {
+  if(element.tagName === 'h1'){
+    element.textContent = ctaContent.h1
+  }else{
+    element.textContent = ctaContent.button
+    element.addEventListener('click', function(){
+      this.textContent = 'clicked'
+    })
+  }
+})
+
+// main 
+
+const mainContent = Object.values(siteContent["main-content"])
+mainContent.splice(mainContent.indexOf('img/mid-page-accent.jpg'),1)
+
+const main = Array.from(document.getElementsByClassName('main-content')[0].querySelectorAll('h4,p'))
+
+main.forEach((element, index) => {
+  element.textContent = mainContent[index]
+})
+
+// contact
+
+const contactContent = Object.values(siteContent["contact"])
+
+const contact = Array.from(document.getElementsByClassName('contact')[0].children)
+
+contact.forEach((element, index) => {
+  element.textContent = contactContent[index]
+})
+
+document.getElementsByTagName('footer')[0].children[0].textContent = siteContent.footer.copyright
